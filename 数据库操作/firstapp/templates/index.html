@@ -1,0 +1,31 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'css/semantic.css' %}" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="{% static  'css/list_custom.css' %}" media="screen" title="no title" charset="utf-8">
+
+</head>
+
+<body>
+    <div class="ui basic segment container content">
+
+        <div class="ui one column grid">
+            {% for article in article_list %}
+            <div class="column">
+              <div class="title header" href="#">文章标题：{{ article.title }}</div>
+              <div class="title header" href="#">文章内容：{{ article.content }}</div>
+              <div class="title header" href="#">阅读数：{{ article.views }}</div>
+              <div class="title header" href="#">喜欢数：{{ article.likes }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>
