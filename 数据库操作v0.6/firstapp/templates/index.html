@@ -1,0 +1,58 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'css/semantic.css' %}" media="screen" title="no title" charset="utf-8">
+    </head>
+
+<body>
+    <div class="ui basic segment container content" style="width:700px;border:none;box-shadow:none">
+
+        <div class="ui one column grid" style="width=100px;">
+          <form action="" method="POST">
+            {% for article in article_list %}
+            <div class="column">
+              <div class="ui labeled input">
+                <div class="ui label">
+                  文章标题：
+                </div>
+                <input type="text" value="{{ article.title }}">
+              </div>
+              <br>
+              <div class="ui labeled input">
+                <div class="ui label">
+                  文章内容：
+                </div>
+                <input type="text" value="{{ article.content }}">
+              </div>
+              <br>
+              <div class="ui labeled input">
+                <div class="ui label">
+                  阅读数：
+                </div>
+                <input type="text" value="{{ article.views }}">
+              </div>
+              <br>
+              <div class="ui labeled input">
+                <div class="ui label">
+                  喜欢数：
+                </div>
+                <input type="text" value="{{ article.likes }}">
+              </div>
+              <br>
+            </div>
+            {% endfor %}
+            {% csrf_token %}
+            <button type="submit" class="ui blue button" ><a href="/update/">Click</a></button>
+          </form>
+          </div>
+        </div>
+    </div>
+</body>
+
+</html>
