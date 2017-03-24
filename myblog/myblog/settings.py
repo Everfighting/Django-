@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 # 新建的APP需要添加在以下中
 INSTALLED_APPS = [
+    # 'bootstrap_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,11 +54,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'myblog.urls'
 
+from django.conf import global_settings
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -69,6 +71,8 @@ TEMPLATES = [
         },
     },
 ]
+
+# BOOTSTRAP_ADMIN_SIDEBAR_MENU = True
 
 WSGI_APPLICATION = 'myblog.wsgi.application'
 

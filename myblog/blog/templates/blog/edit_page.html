@@ -1,23 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit Page</title>
-</head>
-<body>
-<form action="{% url 'blog:edit_action' %}" method="post">
-    {% csrf_token %}
-        <input type="hidden" name="article_id" value="{{ article.id | default:'0' }}"/>
-        <label>文章标题
-            <input type="text" name="title" value="{{ article.title }}"/>
-        </label>
-        <br/>
-        <label>文章内容
-            <input type="text" name="content" value="{{ article.content }}"/>
-        </label>
-        <br/>
-        <input type="submit" value="提交">
-</form>
+{% extends 'blog/base.html' %}
 
-</body>
-</html>
+{% block content %}
+    <div class="ui  vertical very padded segment">
+        <form class="ui form" action="{% url 'blog:edit_action' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="article_id" value="{{ article.id | default:'0' }}"/>
+
+          <div class="field">
+            <label>文章标题</label>
+              <input type="text" name="title" value="{{ article.title }}"/>
+          </div>
+
+          <div class="field">
+            <label>文章内容</label>
+            <textarea type="text" name="content">{{ article.content }}
+            </textarea>
+          </div>
+
+          <div class="inline fields">
+            <div class="field">
+              <div class="ui radio checkbox">
+                <input type="radio" value="life">
+                <label>life</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui radio checkbox">
+                <input type="radio" value="tech">
+                <label>tech</label>
+              </div>
+            </div>
+          </div>
+
+            {#需增加的逻辑：若tag=tag，增checked #}
+          <button class="ui primary button" type="submit">提交</button>
+        </form>
+    </div>
+
+{% endblock content %}
